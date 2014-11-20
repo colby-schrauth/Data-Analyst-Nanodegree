@@ -23,7 +23,6 @@ def avg_medal_count():
     
     olympic_medal_counts_df = {"country_name": countries, "gold": gold, "silver": silver, "bronze": bronze}
     olympic_medal_counts_df = DataFrame(olympic_medal_counts_df)
-    avg_medal_count = olympic_medal_counts_df[["gold", "silver", "bronze"]]
-    avg_medal_count = avg_medal_count.apply(numpy.mean)
+    avg_medal_count = olympic_medal_counts_df[["gold", "silver", "bronze"]].apply(numpy.mean)
     
     return avg_medal_count
