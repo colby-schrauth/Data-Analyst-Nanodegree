@@ -36,4 +36,8 @@ def compare_averages(filename):
     baseball_file = pandas.read_csv(filename)
     baseball_data_left = baseball_file[baseball_file["handedness"] == "L"]
     baseball_data_right = baseball_file[baseball_file["handedness"] == "R"]
-    print baseball_data_left
+    results = scipy.stats.ttest_ind(baseball_data_left["avg"], baseball_data_right["avg"], equal_var = False)
+    if results[1] <= .05:
+        return (False, results)
+    else:
+        return (True, results)
